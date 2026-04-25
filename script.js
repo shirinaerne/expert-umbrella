@@ -1,10 +1,10 @@
-// simple fade-in effect
+const elements = document.querySelectorAll(".fade");
+
 window.addEventListener("scroll", () => {
-  document.querySelectorAll("section").forEach(section => {
-    const position = section.getBoundingClientRect().top;
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
     if (position < window.innerHeight - 100) {
-      section.style.opacity = 1;
-      section.style.transform = "translateY(0)";
+      el.classList.add("show");
     }
   });
 });
