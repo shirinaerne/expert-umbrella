@@ -85,3 +85,101 @@ ul {
   opacity: 1;
   transform: translateY(0);
 }
+/* NAV */
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #00aaff;
+}
+
+/* SPLIT SCREEN */
+.split {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT SIDE */
+.left {
+  width: 50%;
+  background: linear-gradient(135deg, #0a0f2c, #001f4d);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.left h1 {
+  font-size: 48px;
+  margin-bottom: 40px;
+}
+
+/* STEPS */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.step {
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.step:hover {
+  background: rgba(0, 170, 255, 0.3);
+  transform: translateX(10px);
+}
+
+/* RIGHT SIDE */
+.right {
+  width: 50%;
+  background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GLASS EFFECT */
+.glass {
+  background: rgba(255,255,255,0.1);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  max-width: 400px;
+}
+
+.glass h2 {
+  margin-bottom: 20px;
+}
+
+/* FADE ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
