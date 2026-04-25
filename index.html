@@ -16,7 +16,6 @@ body{
   overflow:hidden;
 }
 
-/* SLIDES SYSTEM */
 .slide{
   position:absolute;
   width:100%;
@@ -27,41 +26,50 @@ body{
   align-items:center;
   left:100%;
   transition:0.8s;
+  background-size:cover;
+  background-position:center;
+}
+
+.slide::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
 }
 
 .active{left:0;}
 
-/* HERO STYLE */
 h1{
   font-size:50px;
+  z-index:2;
   background:linear-gradient(90deg,#4da6ff,#00ffd5);
   -webkit-background-clip:text;
   color:transparent;
 }
 
-p{opacity:0.7; max-width:600px; text-align:center}
+p{z-index:2;opacity:0.8;text-align:center;max-width:600px;}
 
-/* CARD GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:20px;
   margin-top:30px;
+  z-index:2;
 }
 
 .card{
   padding:20px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
   transition:0.4s;
 }
 
 .card:hover{
-  transform:translateY(-10px);
-  background:rgba(0,170,255,0.2);
+  transform:translateY(-10px) scale(1.05);
 }
 
-/* BUTTON */
 .btn{
   padding:15px 30px;
   margin-top:20px;
@@ -69,30 +77,21 @@ p{opacity:0.7; max-width:600px; text-align:center}
   border-radius:10px;
   background:#4da6ff;
   cursor:pointer;
+  z-index:2;
 }
 
-/* NAV */
 .nav{
   position:fixed;
   bottom:20px;
   left:50%;
   transform:translateX(-50%);
+  z-index:3;
 }
 
-/* COUNTER */
 .counter{
   font-size:40px;
   color:#4da6ff;
-}
-
-/* AI BOX */
-.ai{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#111;
-  padding:10px;
-  border-radius:10px;
+  z-index:2;
 }
 </style>
 </head>
@@ -100,14 +99,14 @@ p{opacity:0.7; max-width:600px; text-align:center}
 <body>
 
 <!-- SLIDE 1 -->
-<div class="slide active">
+<div class="slide active" style="background:url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5') center/cover;">
 <h1>CRNA Agency</h1>
 <p>Interactive Investor Pitch Presentation</p>
 <button class="btn" onclick="next()">Start</button>
 </div>
 
 <!-- SLIDE 2 -->
-<div class="slide">
+<div class="slide" style="background:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f') center/cover;">
 <h1>Problem</h1>
 <div class="grid">
 <div class="card">CRNA shortage</div>
@@ -117,32 +116,20 @@ p{opacity:0.7; max-width:600px; text-align:center}
 </div>
 
 <!-- SLIDE 3 -->
-<div class="slide">
+<div class="slide" style="background:url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b') center/cover;">
 <h1>Solution</h1>
 <p>We connect hospitals with verified CRNAs quickly and efficiently.</p>
 </div>
 
 <!-- SLIDE 4 -->
-<div class="slide">
-<h1>Market</h1>
-<p>Demand is rising while supply is limited → prices increase.</p>
-</div>
-
-<!-- SLIDE 5 -->
-<div class="slide">
-<h1>Business Model</h1>
-<p>$150–250/hour + 20–30% commission</p>
-</div>
-
-<!-- SLIDE 6 -->
-<div class="slide">
+<div class="slide" style="background:url('https://images.unsplash.com/photo-1607746882042-944635dfe10e') center/cover;">
 <h1>KPI</h1>
 <div class="counter" data-target="8000">0</div>
 <p>Daily revenue potential</p>
 </div>
 
-<!-- SLIDE 7 -->
-<div class="slide">
+<!-- SLIDE 5 -->
+<div class="slide" style="background:url('https://images.unsplash.com/photo-1580281658629-7d2c1d6e0b4e') center/cover;">
 <h1>Investment</h1>
 <p>Scaling nationwide CRNA network</p>
 <button class="btn">Invest</button>
@@ -152,11 +139,6 @@ p{opacity:0.7; max-width:600px; text-align:center}
 <div class="nav">
 <button onclick="prev()">⬅</button>
 <button onclick="next()">➡</button>
-</div>
-
-<!-- AI -->
-<div class="ai">
-<input placeholder="Ask..." onkeydown="chat(event)">
 </div>
 
 <script>
@@ -178,7 +160,6 @@ function prev(){
   show();
 }
 
-// COUNTER
 let counter=document.querySelector('.counter');
 window.addEventListener('click',()=>{
   if(counter.innerText=="0"){
@@ -191,15 +172,6 @@ window.addEventListener('click',()=>{
   }
 });
 
-// AI
-function chat(e){
-  if(e.key==="Enter"){
-    alert("AI: We connect hospitals with CRNAs.");
-    e.target.value="";
-  }
-}
-
-// KEYBOARD CONTROL (ВАЖНО ДЛЯ ПРЕЗЕНТАЦИИ)
 document.addEventListener("keydown",(e)=>{
   if(e.key==="ArrowRight") next();
   if(e.key==="ArrowLeft") prev();
